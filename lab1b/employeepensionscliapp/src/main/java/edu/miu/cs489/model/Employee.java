@@ -8,17 +8,24 @@ public class Employee {
     private String lastName;
     private LocalDate employmentDate;
     private Double yearlySalary;
+    private PensionPlan pensionPlan;
 
     public Employee() {
-        this(null, null, null, null, null);
+        this(null, null, null, null, null, null, null, null);
     }
 
     public Employee(Long employeeId, String firstName, String lastName, LocalDate employmentDate, Double yearlySalary) {
+        this(employeeId, firstName, lastName, employmentDate, yearlySalary, null, null, null);
+    }
+
+    public Employee(Long employeeId, String firstName, String lastName, LocalDate employmentDate, Double yearlySalary,
+                    Long planReferenceNumber, LocalDate enrollmentDate, Double monthlyContribution) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.employmentDate = employmentDate;
         this.yearlySalary = yearlySalary;
+        this.pensionPlan = new PensionPlan(planReferenceNumber, enrollmentDate, monthlyContribution);
     }
 
     public Long getEmployeeId() {
@@ -69,6 +76,7 @@ public class Employee {
                 ", lastName='" + lastName + '\'' +
                 ", employmentDate=" + employmentDate +
                 ", yearlySalary=" + yearlySalary +
+                ", pensionPlan=" + pensionPlan +
                 '}';
     }
 }

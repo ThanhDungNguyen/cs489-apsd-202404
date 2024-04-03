@@ -7,11 +7,11 @@ public class PensionPlan {
     private LocalDate enrollmentDate;
     private Double monthlyContribution;
 
-    public PensionPlan() {
+    PensionPlan() {
         this(null, null, null);
     }
 
-    public PensionPlan(Long planReferenceNumber, LocalDate enrollmentDate, Double monthlyContribution) {
+    PensionPlan(Long planReferenceNumber, LocalDate enrollmentDate, Double monthlyContribution) {
         this.planReferenceNumber = planReferenceNumber;
         this.enrollmentDate = enrollmentDate;
         this.monthlyContribution = monthlyContribution;
