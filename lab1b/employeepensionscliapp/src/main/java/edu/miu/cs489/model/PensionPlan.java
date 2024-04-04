@@ -49,4 +49,9 @@ public class PensionPlan {
                 ", monthlyContribution=" + monthlyContribution +
                 '}';
     }
+
+    public String toJson() {
+        return String.format("{\"planReferenceNumber\":\"%s\",\n\"enrollmentDate\":%s,\n\"monthlyContribution\":%f}",
+                planReferenceNumber, enrollmentDate, monthlyContribution);
+    }
 }

@@ -76,7 +76,7 @@ public class Employee {
                 ", lastName='" + lastName + '\'' +
                 ", employmentDate=" + employmentDate +
                 ", yearlySalary=" + yearlySalary +
-                ", pensionPlan=" + pensionPlan +
+                ", pensionPlan=" + pensionPlan.toJson() +
                 '}';
     }
 }
