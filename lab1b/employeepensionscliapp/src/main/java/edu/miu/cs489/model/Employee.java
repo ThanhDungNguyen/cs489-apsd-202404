@@ -19,7 +19,7 @@ public class Employee {
     }
 
     public Employee(Long employeeId, String firstName, String lastName, LocalDate employmentDate, Double yearlySalary,
-                    Long planReferenceNumber, LocalDate enrollmentDate, Double monthlyContribution) {
+                    String planReferenceNumber, LocalDate enrollmentDate, Double monthlyContribution) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;

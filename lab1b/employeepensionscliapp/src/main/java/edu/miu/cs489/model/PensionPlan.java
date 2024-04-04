@@ -3,7 +3,7 @@ package edu.miu.cs489.model;
 import java.time.LocalDate;
 
 public class PensionPlan {
-    private Long planReferenceNumber;
+    private String planReferenceNumber;
     private LocalDate enrollmentDate;
     private Double monthlyContribution;
 
@@ -11,17 +11,17 @@ public class PensionPlan {
         this(null, null, null);
     }
 
-    PensionPlan(Long planReferenceNumber, LocalDate enrollmentDate, Double monthlyContribution) {
+    PensionPlan(String planReferenceNumber, LocalDate enrollmentDate, Double monthlyContribution) {
         this.planReferenceNumber = planReferenceNumber;
         this.enrollmentDate = enrollmentDate;
         this.monthlyContribution = monthlyContribution;
     }
 
-    public Long getPlanReferenceNumber() {
+    public String getPlanReferenceNumber() {
         return planReferenceNumber;
     }
 
-    public void setPlanReferenceNumber(Long planReferenceNumber) {
+    public void setPlanReferenceNumber(String planReferenceNumber) {
         this.planReferenceNumber = planReferenceNumber;
     }
 
