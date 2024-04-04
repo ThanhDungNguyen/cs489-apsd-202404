@@ -76,7 +76,12 @@ public class Employee {
                 ", lastName='" + lastName + '\'' +
                 ", employmentDate=" + employmentDate +
                 ", yearlySalary=" + yearlySalary +
-                ", pensionPlan=" + pensionPlan.toJson() +
+                ", pensionPlan=" + pensionPlan +
                 '}';
+    }
+
+    public String toJson() {
+        return String.format("{\"employeeId\":%d,\n\"firstName\":\"%s\",\n\"lastName\":\"%s\",\n\"employmentDate\":\"%s\",\n\"yearlySalary\":%f,\n\"pensionPlan\":%s}",
+                employeeId, firstName, lastName, employmentDate, yearlySalary, pensionPlan.toJson());
     }
 }

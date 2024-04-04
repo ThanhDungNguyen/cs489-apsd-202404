@@ -51,7 +51,7 @@ public class PensionPlan {
     }
 
     public String toJson() {
-        return String.format("{\"planReferenceNumber\":\"%s\",\n\"enrollmentDate\":%s,\n\"monthlyContribution\":%f}",
+        return String.format("{\"planReferenceNumber\":\"%s\",\n\"enrollmentDate\":\"%s\",\n\"monthlyContribution\":%f}",
                 planReferenceNumber, enrollmentDate, monthlyContribution);
     }
 }
