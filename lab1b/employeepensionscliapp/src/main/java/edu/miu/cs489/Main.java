@@ -34,7 +34,10 @@ public class Main {
     }
 
     public static void printMonthlyUpcomingEnrolleesReport(List<Employee> employees) {
-        var qualifiedEmployees = employees.stream().filter(Employee::willQualifyPensionPlanNextMonth).collect(Collectors.toList());
+        var qualifiedEmployees = employees.stream()
+                .filter(Employee::willQualifyPensionPlanNextMonth)
+                .sorted(Comparator.comparing(Employee::getEmploymentDate))
+                .collect(Collectors.toList());
 
         System.out.println("Monthly Upcoming Enrollees Report:");
         System.out.println("[");
