@@ -25,7 +25,9 @@ public class Employee {
         this.lastName = lastName;
         this.employmentDate = employmentDate;
         this.yearlySalary = yearlySalary;
-        this.pensionPlan = new PensionPlan(planReferenceNumber, enrollmentDate, monthlyContribution);
+        if (planReferenceNumber != null && enrollmentDate != null && monthlyContribution != null) {
+            this.pensionPlan = new PensionPlan(planReferenceNumber, enrollmentDate, monthlyContribution);
+        }
     }
 
     public Long getEmployeeId() {
@@ -91,6 +93,6 @@ public class Employee {
 
     public String toJson() {
         return String.format("{\"employeeId\":%d,\n\"firstName\":\"%s\",\n\"lastName\":\"%s\",\n\"employmentDate\":\"%s\",\n\"yearlySalary\":%f,\n\"pensionPlan\":%s}",
-                employeeId, firstName, lastName, employmentDate, yearlySalary, pensionPlan.toJson());
+                employeeId, firstName, lastName, employmentDate, yearlySalary, pensionPlan != null ? pensionPlan.toJson() : "{}");
     }
 }

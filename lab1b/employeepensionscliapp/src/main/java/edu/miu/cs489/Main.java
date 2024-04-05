@@ -16,6 +16,7 @@ public class Main {
                 new Employee(4L, "Wesley", "Schneider", LocalDate.of(2019, 5, 2), 74500.00)
         );
         printAllEmployees(employees);
+        printMonthlyUpcomingEnrolleesReport(employees);
     }
 
     public static void printAllEmployees(List<Employee> employees) {
@@ -24,11 +25,23 @@ public class Main {
                 .collect(Collectors.toList());
 
         System.out.println("All Employees:");
-        System.out.print("[");
+        System.out.println("[");
         for (int i = 0; i < sortedEmployees.size(); i++) {
             System.out.print(sortedEmployees.get(i).toJson());
             System.out.println(i < (sortedEmployees.size() - 1) ? "," : "");
         }
-        System.out.print("]");
+        System.out.println("]");
+    }
+
+    public static void printMonthlyUpcomingEnrolleesReport(List<Employee> employees) {
+        var qualifiedEmployees = employees.stream().filter(Employee::willQualifyPensionPlanNextMonth).collect(Collectors.toList());
+
+        System.out.println("Monthly Upcoming Enrollees Report:");
+        System.out.println("[");
+        for (int i = 0; i < qualifiedEmployees.size(); i++) {
+            System.out.print(qualifiedEmployees.get(i).toJson());
+            System.out.println(i < (qualifiedEmployees.size() - 1) ? "," : "");
+        }
+        System.out.println("]");
     }
 }
