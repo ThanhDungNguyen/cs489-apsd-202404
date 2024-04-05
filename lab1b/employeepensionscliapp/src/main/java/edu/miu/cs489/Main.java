@@ -13,6 +13,11 @@ public class Main {
                 new Employee(3L, "Carly", "Agar", LocalDate.of(2014, 5, 16), 842000.75, "SM2307", LocalDate.of(2019, 11, 4), 1555.50),
                 new Employee(4L, "Wesley", "Schneider", LocalDate.of(2019, 5, 2), 74500.00)
         );
+        printAllEmployees(employees);
+    }
+
+    public static void printAllEmployees(List<Employee> employees) {
+        System.out.println("All Employees:");
         System.out.print("[");
         for (int i = 0; i < employees.size(); i++) {
             System.out.print(employees.get(i).toJson());
