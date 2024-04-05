@@ -68,6 +68,15 @@ public class Employee {
         this.yearlySalary = yearlySalary;
     }
 
+    public boolean willQualifyPensionPlanNextMonth() {
+        if (pensionPlan != null)
+            return false;
+
+        var qualifiedDate = employmentDate.plusYears(5);
+        var nextMonthDate = LocalDate.now().plusMonths(1);
+        return qualifiedDate.getYear() == nextMonthDate.getYear() && qualifiedDate.getMonth() == nextMonthDate.getMonth();
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
