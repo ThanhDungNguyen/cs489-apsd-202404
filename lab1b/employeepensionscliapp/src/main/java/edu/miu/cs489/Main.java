@@ -25,12 +25,7 @@ public class Main {
                 .collect(Collectors.toList());
 
         System.out.println("All Employees:");
-        System.out.println("[");
-        for (int i = 0; i < sortedEmployees.size(); i++) {
-            System.out.print(sortedEmployees.get(i).toJson());
-            System.out.println(i < (sortedEmployees.size() - 1) ? "," : "");
-        }
-        System.out.println("]");
+        printEmployees(sortedEmployees);
     }
 
     public static void printMonthlyUpcomingEnrolleesReport(List<Employee> employees) {
@@ -40,10 +35,14 @@ public class Main {
                 .collect(Collectors.toList());
 
         System.out.println("Monthly Upcoming Enrollees Report:");
+        printEmployees(qualifiedEmployees);
+    }
+
+    public static void printEmployees(List<Employee> employees) {
         System.out.println("[");
-        for (int i = 0; i < qualifiedEmployees.size(); i++) {
-            System.out.print(qualifiedEmployees.get(i).toJson());
-            System.out.println(i < (qualifiedEmployees.size() - 1) ? "," : "");
+        for (int i = 0; i < employees.size(); i++) {
+            System.out.print(employees.get(i).toJson());
+            System.out.println(i < (employees.size() - 1) ? "," : "");
         }
         System.out.println("]");
     }
