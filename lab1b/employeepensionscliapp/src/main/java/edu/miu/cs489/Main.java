@@ -3,7 +3,9 @@ package edu.miu.cs489;
 import edu.miu.cs489.model.Employee;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,11 +19,15 @@ public class Main {
     }
 
     public static void printAllEmployees(List<Employee> employees) {
+        var sortedEmployees = employees.stream()
+                .sorted(Comparator.comparing(Employee::getLastName).thenComparing(Employee::getYearlySalary, Comparator.reverseOrder()))
+                .collect(Collectors.toList());
+
         System.out.println("All Employees:");
         System.out.print("[");
-        for (int i = 0; i < employees.size(); i++) {
-            System.out.print(employees.get(i).toJson());
-            System.out.println(i < (employees.size() - 1) ? "," : "");
+        for (int i = 0; i < sortedEmployees.size(); i++) {
+            System.out.print(sortedEmployees.get(i).toJson());
+            System.out.println(i < (sortedEmployees.size() - 1) ? "," : "");
         }
         System.out.print("]");
     }
