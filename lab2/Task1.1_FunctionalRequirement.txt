@@ -1,0 +1,17 @@
+Actors
+• Office Manager
+• Dentist
+• Patient
+
+Requirements
+• The system can have a login system for users to login before interact with the system
+• The system can allows Office Manager to register Dentists
+• The system can allows Office Manager to manage data of Dentists
+• The system can allows Office Manager to enroll Patients
+• The system can allows Office Manager to manage data of Patients
+• The system can allows Patients to request appointments by online form
+• The system can allows Office Manager to book the appointments requested by Patients
+• The system can send email to Patients for the appointment confirmation
+• The system can allows Dentists to view the list of their Appointments and Patients
+• The system can allows Patients to view their Appointments and Dentist
+• The system can allows Patients to cancel or update their Appointments
