@@ -16,4 +16,6 @@ public class Surgery {
     private Long id;
     private String name;
     private String phoneNumber;
+    @OneToOne
+    private Address address;
 }

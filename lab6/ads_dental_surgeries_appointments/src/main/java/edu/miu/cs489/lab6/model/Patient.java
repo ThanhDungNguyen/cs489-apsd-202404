@@ -21,4 +21,6 @@ public class Patient {
     private String phoneNumber;
     private String email;
     private LocalDate dateOfBirth;
+    @OneToOne
+    private Address address;
 }
