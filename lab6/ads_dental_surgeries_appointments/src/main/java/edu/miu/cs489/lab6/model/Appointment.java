@@ -18,4 +18,10 @@ public class Appointment {
     private Long id;
     private LocalDate dateTime;
     private String surgeryLocation;
+    @ManyToOne
+    private Dentist dentist;
+    @ManyToOne
+    private Patient patient;
+    @ManyToOne
+    private Surgery surgery;
 }
