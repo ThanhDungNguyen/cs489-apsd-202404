@@ -21,5 +21,11 @@ public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRun
     public void run(String... args) throws Exception {
         var dentist = new Dentist(null, "Tony", "Smith", "111-111-1111", "tony.smith@email.com", "Specialization 1");
         dentistService.addNewDentist(dentist);
+
+        dentist = new Dentist(null, "Helen", "Pearson", "111-111-2222", "helen.pearson@email.com", "Specialization 2");
+        dentistService.addNewDentist(dentist);
+
+        dentist = new Dentist(null, "Robin", "Plevin", "111-111-3333", "robin.plevin@email.com", "Specialization 3");
+        dentistService.addNewDentist(dentist);
     }
 }
