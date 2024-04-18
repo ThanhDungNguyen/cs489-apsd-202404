@@ -16,8 +16,12 @@ public class SurgeryServiceImpl implements SurgeryService {
 
     @Override
     public List<Surgery> getAllSurgeries() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllSurgeries'");
+        return surgeryRepository.findAll();
+    }
+
+    @Override
+    public Surgery getSurgeryById(String surgeryId) {
+        return surgeryRepository.findById(surgeryId).orElse(null);
     }
 
     @Override
@@ -28,14 +32,14 @@ public class SurgeryServiceImpl implements SurgeryService {
 
     @Override
     public Surgery updateSurgery(Surgery updatedSurgery) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateSurgery'");
+        surgeryRepository.save(updatedSurgery);
+        return updatedSurgery;
     }
 
     @Override
-    public boolean deleteSurgery(Long surgeryId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteSurgery'");
+    public boolean deleteSurgery(String surgeryId) {
+        surgeryRepository.deleteById(surgeryId);
+        return true;
     }
-    
+
 }

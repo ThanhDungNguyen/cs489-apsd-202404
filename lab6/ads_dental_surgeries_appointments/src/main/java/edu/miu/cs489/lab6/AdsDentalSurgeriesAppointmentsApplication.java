@@ -93,6 +93,12 @@ public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRun
         var address12 = new Address(null, "Street 12", "City 12", "State 12", "99000");
         addressService.addNewAddress(address12);
 
+        var address13 = new Address(null, "Street 13", "City 13", "State 13", "90000");
+        addressService.addNewAddress(address13);
+
+        var address14 = new Address(null, "Street 14", "City 14", "State 14", "99991");
+        addressService.addNewAddress(address14);
+
         // Add patients
         var patient1 = new Patient("P100", "Gillian", "White", "222-222-1111", "gillian.white@email.com",
                 LocalDate.of(1988, 1, 1), address1);
@@ -123,6 +129,12 @@ public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRun
 
         var surgery3 = new Surgery("S15", "Surgery 15", "333-333-3333", address7);
         surgeryService.addNewSurgery(surgery3);
+
+        var surgery4 = new Surgery("S20", "Surgery 20", "333-333-4444", address13);
+        surgeryService.addNewSurgery(surgery4);
+
+        var surgery5 = new Surgery("S25", "Surgery 25", "333-333-5555", address14);
+        surgeryService.addNewSurgery(surgery5);
 
         // Add appointments
         var appointment1 = new Appointment(null, LocalDateTime.of(2013, 9, 12, 10, 0, 0), dentist1, patient1,
@@ -191,10 +203,30 @@ public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRun
         System.out.println(String.format("A patient: %s", aPatient));
 
         aPatient.setPhoneNumber("222-333-2222");
-        System.out.println(String.format("Updated patient: %s", aPatient));
+        patientService.updatePatient(aPatient);
+
+        var updatedPatient = patientService.getPatientById("P105");
+        System.out.println(String.format("Updated patient: %s", updatedPatient));
 
         patientService.deletePatient("P115");
         patients = patientService.getAllPatients();
         patients.stream().forEach(System.out::println);
+
+        // CRUD for surgeries
+        var surgeries = surgeryService.getAllSurgeries();
+        surgeries.stream().forEach(System.out::println);
+
+        var aSurgery = surgeryService.getSurgeryById("S13");
+        System.out.println(String.format("A surgery: %s", aSurgery));
+
+        aSurgery.setPhoneNumber("333-444-2222");
+        surgeryService.updateSurgery(aSurgery);
+
+        var updatedSurgery = surgeryService.getSurgeryById("S13");
+        System.out.println(String.format("Updated surgery: %s", updatedSurgery));
+
+        surgeryService.deleteSurgery("S25");
+        surgeries = surgeryService.getAllSurgeries();
+        surgeries.stream().forEach(System.out::println);
     }
 }
