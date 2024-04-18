@@ -15,7 +15,12 @@ public class DentistServiceImpl implements DentistService {
 
     @Override
     public List<Dentist> getAllDentists() {
-        return null;
+        return dentistRepository.findAll();
+    }
+
+    @Override
+    public Dentist getDentistByID(Long dentistID) {
+        return dentistRepository.getReferenceById(dentistID);
     }
 
     @Override
@@ -26,11 +31,13 @@ public class DentistServiceImpl implements DentistService {
 
     @Override
     public Dentist updateDentist(Dentist updatedDentist) {
-        return null;
+        dentistRepository.save(updatedDentist);
+        return updatedDentist;
     }
 
     @Override
     public boolean deleteDentist(Long dentistID) {
-        return false;
+        dentistRepository.deleteById(dentistID);
+        return true;
     }
 }

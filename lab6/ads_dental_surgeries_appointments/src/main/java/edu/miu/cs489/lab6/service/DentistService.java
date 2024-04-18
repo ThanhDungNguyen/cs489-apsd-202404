@@ -7,6 +7,8 @@ import java.util.List;
 public interface DentistService {
     List<Dentist> getAllDentists();
 
+    Dentist getDentistByID(Long dentistID);
+
     Dentist addNewDentist(Dentist newDentist);
 
     Dentist updateDentist(Dentist updatedDentist);
