@@ -16,8 +16,12 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public List<Address> getAllAddresses() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllAddresses'");
+        return addressRepository.findAll();
+    }
+
+    @Override
+    public Address getAddressByID(Long addressID) {
+        return addressRepository.findById(addressID).orElse(null);
     }
 
     @Override
@@ -28,14 +32,14 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Address updateAddress(Address updatedAddress) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateAddress'");
+        addressRepository.save(updatedAddress);
+        return updatedAddress;
     }
 
     @Override
     public boolean deleteAddress(Long addressID) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteAddress'");
+        addressRepository.deleteById(addressID);
+        return true;
     }
 
 }

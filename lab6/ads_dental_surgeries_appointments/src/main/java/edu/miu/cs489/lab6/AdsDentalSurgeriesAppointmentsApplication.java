@@ -3,6 +3,7 @@ package edu.miu.cs489.lab6;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import org.aspectj.internal.lang.annotation.ajcDeclarePrecedence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -86,6 +87,9 @@ public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRun
         var address10 = new Address(null, "Street 10", "City 10", "State 10", "99990");
         addressService.addNewAddress(address10);
 
+        var address11 = new Address(null, "Street 11", "City 11", "State 11", "99900");
+        addressService.addNewAddress(address11);
+
         // Add patients
         var patient1 = new Patient("P100", "Gillian", "White", "222-222-1111", "gillian.white@email.com",
                 LocalDate.of(1988, 1, 1), address1);
@@ -154,5 +158,22 @@ public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRun
         dentistService.deleteDentist(4L);
         dentists = dentistService.getAllDentists();
         dentists.stream().forEach(System.out::println);
+
+        // CRUD for addresses
+        var addresses = addressService.getAllAddresses();
+        addresses.stream().forEach(System.out::println);
+
+        var anAddress = addressService.getAddressByID(2L);
+        System.out.println(String.format("An address: %s", anAddress));
+
+        anAddress.setStreet("Street 22");
+        addressService.updateAddress(anAddress);
+
+        var updatedAddress = addressService.getAddressByID(2L);
+        System.out.println(String.format("Updated address: %s", updatedAddress));
+
+        addressService.deleteAddress(11L);
+        addresses = addressService.getAllAddresses();
+        addresses.stream().forEach(System.out::println);
     }
 }
