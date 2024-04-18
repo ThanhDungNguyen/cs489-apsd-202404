@@ -1,19 +1,26 @@
 package edu.miu.cs489.lab6;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import edu.miu.cs489.lab6.model.Address;
 import edu.miu.cs489.lab6.model.Dentist;
+import edu.miu.cs489.lab6.model.Patient;
 import edu.miu.cs489.lab6.service.AddressService;
 import edu.miu.cs489.lab6.service.DentistService;
+import edu.miu.cs489.lab6.service.PatientService;
 
 @SpringBootApplication
 public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRunner {
     @Autowired
     private DentistService dentistService;
+    @Autowired
+    private PatientService patientService;
     @Autowired
     private AddressService addressService;
 
@@ -34,5 +41,9 @@ public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRun
 
         var address = new Address(null, "Street 1", "City 1", "State 1", "11111");
         addressService.addNewAddress(address);
+
+        var patient = new Patient("P100", "Gillian", "White", "222-222-2222", "gillian.white@email.com",
+                LocalDate.of(1988, 1, 1), address);
+        patientService.addNewPatient(patient);
     }
 }
