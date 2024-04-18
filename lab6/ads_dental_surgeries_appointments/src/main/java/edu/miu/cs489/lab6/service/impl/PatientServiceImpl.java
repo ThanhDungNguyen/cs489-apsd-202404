@@ -10,14 +10,18 @@ import edu.miu.cs489.lab6.repository.PatientRepository;
 import edu.miu.cs489.lab6.service.PatientService;
 
 @Service
-public class PatientServiceImpl implements PatientService{
+public class PatientServiceImpl implements PatientService {
     @Autowired
     private PatientRepository patientRepository;
 
     @Override
     public List<Patient> getAllPatients() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllPatients'");
+        return patientRepository.findAll();
+    }
+
+    @Override
+    public Patient getPatientById(String patientId) {
+        return patientRepository.findById(patientId).orElse(null);
     }
 
     @Override
@@ -28,14 +32,14 @@ public class PatientServiceImpl implements PatientService{
 
     @Override
     public Patient updatePatient(Patient updatedPatient) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updatePatient'");
+        patientRepository.save(updatedPatient);
+        return updatedPatient;
     }
 
     @Override
-    public boolean deletePatient(Long patientID) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletePatient'");
+    public boolean deletePatient(String patientId) {
+        patientRepository.deleteById(patientId);
+        return true;
     }
 
 }

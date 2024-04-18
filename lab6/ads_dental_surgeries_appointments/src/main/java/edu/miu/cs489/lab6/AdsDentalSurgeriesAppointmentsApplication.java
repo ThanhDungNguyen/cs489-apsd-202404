@@ -90,6 +90,9 @@ public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRun
         var address11 = new Address(null, "Street 11", "City 11", "State 11", "99900");
         addressService.addNewAddress(address11);
 
+        var address12 = new Address(null, "Street 12", "City 12", "State 12", "99000");
+        addressService.addNewAddress(address12);
+
         // Add patients
         var patient1 = new Patient("P100", "Gillian", "White", "222-222-1111", "gillian.white@email.com",
                 LocalDate.of(1988, 1, 1), address1);
@@ -106,6 +109,10 @@ public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRun
         var patient4 = new Patient("P110", "John", "Walker", "222-222-4444", "john.walker@email.com",
                 LocalDate.of(1988, 4, 4), address4);
         patientService.addNewPatient(patient4);
+
+        var patient5 = new Patient("P115", "First2", "Last2", "222-222-5555", "first2.last2@email.com",
+                LocalDate.of(1988, 4, 4), address12);
+        patientService.addNewPatient(patient5);
 
         // Add surgeries
         var surgery1 = new Surgery("S10", "Surgery 10", "333-333-1111", address5);
@@ -175,5 +182,19 @@ public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRun
         addressService.deleteAddress(11L);
         addresses = addressService.getAllAddresses();
         addresses.stream().forEach(System.out::println);
+
+        // CRUD for patients
+        var patients = patientService.getAllPatients();
+        patients.stream().forEach(System.out::println);
+
+        var aPatient = patientService.getPatientById("P105");
+        System.out.println(String.format("A patient: %s", aPatient));
+
+        aPatient.setPhoneNumber("222-333-2222");
+        System.out.println(String.format("Updated patient: %s", aPatient));
+
+        patientService.deletePatient("P115");
+        patients = patientService.getAllPatients();
+        patients.stream().forEach(System.out::println);
     }
 }

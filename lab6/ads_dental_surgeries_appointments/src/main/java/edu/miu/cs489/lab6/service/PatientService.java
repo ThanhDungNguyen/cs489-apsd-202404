@@ -6,7 +6,12 @@ import java.util.List;
 
 public interface PatientService {
     List<Patient> getAllPatients();
+
+    Patient getPatientById(String patientId);
+
     Patient addNewPatient(Patient newPatient);
+
     Patient updatePatient(Patient updatedPatient);
-    boolean deletePatient(Long patientID);
+
+    boolean deletePatient(String patientId);
 }
