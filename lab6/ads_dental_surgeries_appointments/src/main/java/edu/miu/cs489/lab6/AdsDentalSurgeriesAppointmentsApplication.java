@@ -5,13 +5,17 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import edu.miu.cs489.lab6.model.Address;
 import edu.miu.cs489.lab6.model.Dentist;
+import edu.miu.cs489.lab6.service.AddressService;
 import edu.miu.cs489.lab6.service.DentistService;
 
 @SpringBootApplication
 public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRunner {
     @Autowired
     private DentistService dentistService;
+    @Autowired
+    private AddressService addressService;
 
     public static void main(String[] args) {
         SpringApplication.run(AdsDentalSurgeriesAppointmentsApplication.class, args);
@@ -27,5 +31,8 @@ public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRun
 
         dentist = new Dentist(null, "Robin", "Plevin", "111-111-3333", "robin.plevin@email.com", "Specialization 3");
         dentistService.addNewDentist(dentist);
+
+        var address = new Address(null, "Street 1", "City 1", "State 1", "11111");
+        addressService.addNewAddress(address);
     }
 }
