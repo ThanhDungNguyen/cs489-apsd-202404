@@ -20,7 +20,7 @@ public class DentistServiceImpl implements DentistService {
 
     @Override
     public Dentist getDentistByID(Long dentistID) {
-        return dentistRepository.getReferenceById(dentistID);
+        return dentistRepository.findById(dentistID).orElse(null);
     }
 
     @Override

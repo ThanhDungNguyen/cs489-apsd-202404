@@ -39,7 +39,8 @@ public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRun
     @Override
     public void run(String... args) throws Exception {
         // Add dentists
-        var dentist1 = new Dentist(null, "Tony", "Smith", "111-111-1111", "tony.smith@email.com", "Specialization 1");
+        var dentist1 = new Dentist(null, "Tony", "Smith", "111-111-1111", "tony.smith@email.com",
+                "Specialization 1");
         dentistService.addNewDentist(dentist1);
 
         var dentist2 = new Dentist(null, "Helen", "Pearson", "111-111-2222", "helen.pearson@email.com",
@@ -49,6 +50,10 @@ public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRun
         var dentist3 = new Dentist(null, "Robin", "Plevin", "111-111-3333", "robin.plevin@email.com",
                 "Specialization 3");
         dentistService.addNewDentist(dentist3);
+
+        var dentist4 = new Dentist(null, "First1", "Last1", "111-111-4444", "first.last@email.com",
+                "Specialization 4");
+        dentistService.addNewDentist(dentist4);
 
         // Add addresses
         var address1 = new Address(null, "Street 1", "City 1", "State 1", "11111");
@@ -109,23 +114,45 @@ public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRun
         surgeryService.addNewSurgery(surgery3);
 
         // Add appointments
-        var appointment1 = new Appointment(null, LocalDateTime.of(2013, 9, 12, 10, 0, 0), dentist1, patient1, surgery3);
+        var appointment1 = new Appointment(null, LocalDateTime.of(2013, 9, 12, 10, 0, 0), dentist1, patient1,
+                surgery3);
         appointmentService.addNewAppointment(appointment1);
 
-        var appointment2 = new Appointment(null, LocalDateTime.of(2013, 9, 12, 12, 0, 0), dentist1, patient2, surgery3);
+        var appointment2 = new Appointment(null, LocalDateTime.of(2013, 9, 12, 12, 0, 0), dentist1, patient2,
+                surgery3);
         appointmentService.addNewAppointment(appointment2);
 
-        var appointment3 = new Appointment(null, LocalDateTime.of(2013, 9, 12, 10, 0, 0), dentist2, patient3, surgery1);
+        var appointment3 = new Appointment(null, LocalDateTime.of(2013, 9, 12, 10, 0, 0), dentist2, patient3,
+                surgery1);
         appointmentService.addNewAppointment(appointment3);
 
-        var appointment4 = new Appointment(null, LocalDateTime.of(2013, 9, 14, 14, 0, 0), dentist2, patient3, surgery1);
+        var appointment4 = new Appointment(null, LocalDateTime.of(2013, 9, 14, 14, 0, 0), dentist2, patient3,
+                surgery1);
         appointmentService.addNewAppointment(appointment4);
 
         var appointment5 = new Appointment(null, LocalDateTime.of(2013, 9, 14, 16, 30, 0), dentist3, patient2,
                 surgery3);
         appointmentService.addNewAppointment(appointment5);
 
-        var appointment6 = new Appointment(null, LocalDateTime.of(2013, 9, 15, 18, 0, 0), dentist3, patient4, surgery2);
+        var appointment6 = new Appointment(null, LocalDateTime.of(2013, 9, 15, 18, 0, 0), dentist3, patient4,
+                surgery2);
         appointmentService.addNewAppointment(appointment6);
+
+        // CRUD for Dentist
+        var dentists = dentistService.getAllDentists();
+        dentists.stream().forEach(System.out::println);
+
+        var aDentist = dentistService.getDentistByID(2L);
+        System.out.println(String.format("A dentist: %s", aDentist));
+
+        aDentist.setSpecialization("New specialization");
+        dentistService.updateDentist(aDentist);
+
+        var updatedDentist = dentistService.getDentistByID(2L);
+        System.out.println(String.format("Updated dentist: %s", updatedDentist));
+
+        dentistService.deleteDentist(4L);
+        dentists = dentistService.getAllDentists();
+        dentists.stream().forEach(System.out::println);
     }
 }
