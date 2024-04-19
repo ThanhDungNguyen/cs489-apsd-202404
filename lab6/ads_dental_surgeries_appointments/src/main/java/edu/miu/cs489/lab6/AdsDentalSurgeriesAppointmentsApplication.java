@@ -228,5 +228,22 @@ public class AdsDentalSurgeriesAppointmentsApplication implements CommandLineRun
         surgeryService.deleteSurgery("S25");
         surgeries = surgeryService.getAllSurgeries();
         surgeries.stream().forEach(System.out::println);
+
+        // CRUD for appointments
+        var appointments = appointmentService.getAllAppointments();
+        appointments.stream().forEach(System.out::println);
+
+        var anAppointment = appointmentService.getAppointmentById(2L);
+        System.out.println(String.format("An appointment: %s", anAppointment));
+
+        anAppointment.setDateTime(anAppointment.getDateTime().plusDays(1));
+        appointmentService.updateAppointment(anAppointment);
+
+        var updatedAppointment = appointmentService.getAppointmentById(2L);
+        System.out.println(String.format("Updated appointment: %s", updatedAppointment));
+
+        appointmentService.deleteAppointmentById(6L);
+        appointments = appointmentService.getAllAppointments();
+        appointments.stream().forEach(System.out::println);
     }
 }

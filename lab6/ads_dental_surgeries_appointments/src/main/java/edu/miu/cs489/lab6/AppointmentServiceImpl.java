@@ -16,8 +16,12 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public List<Appointment> getAllAppointments() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllAppointments'");
+        return appointmentRepository.findAll();
+    }
+
+    @Override
+    public Appointment getAppointmentById(Long appointmentId) {
+        return appointmentRepository.findById(appointmentId).orElse(null);
     }
 
     @Override
@@ -28,14 +32,14 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public Appointment updateAppointment(Appointment updatedAppointment) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateAppointment'");
+        appointmentRepository.save(updatedAppointment);
+        return updatedAppointment;
     }
 
     @Override
-    public boolean deleteAppointment(Long appointmentID) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteAppointment'");
+    public boolean deleteAppointmentById(Long appointmentId) {
+        appointmentRepository.deleteById(appointmentId);
+        return true;
     }
 
 }
