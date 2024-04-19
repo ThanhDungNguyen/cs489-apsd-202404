@@ -1,4 +1,4 @@
-package edu.miu.cs489.lab6;
+package edu.miu.cs489.lab6.service.impl;
 
 import java.util.List;
 
