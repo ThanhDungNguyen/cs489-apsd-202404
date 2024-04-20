@@ -1,6 +1,7 @@
 package edu.miu.cs489.lab7.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,9 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public List<PatientResponse> getAllPatients() {
-        // return patientRepository.findAll();
-        return null;
+        var patients = patientRepository.findAll();
+        return patients.stream().map(patient -> PatientAdapter.getPatientResponseFromPatient(patient))
+                .collect(Collectors.toList());
     }
 
     @Override

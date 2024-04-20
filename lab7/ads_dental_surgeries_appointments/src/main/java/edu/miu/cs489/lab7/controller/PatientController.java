@@ -22,8 +22,9 @@ public class PatientController {
     private PatientService patientService;
 
     @GetMapping(value = "/list")
-    public ResponseEntity<List<PatientResponse>> getAllPatients() throws Exception {
-        throw new Exception("Not implemented");
+    public ResponseEntity<List<PatientResponse>> getAllPatients() {
+        var patients = patientService.getAllPatients();
+        return new ResponseEntity<>(patients, HttpStatus.OK);
     }
 
     @PostMapping(value = "/add")
