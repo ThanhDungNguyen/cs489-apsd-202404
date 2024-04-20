@@ -2,16 +2,17 @@ package edu.miu.cs489.lab7.service;
 
 import java.util.List;
 
-import edu.miu.cs489.lab7.model.Address;
+import edu.miu.cs489.lab7.dto.address.AddressRequest;
+import edu.miu.cs489.lab7.dto.address.AddressResponse;
 
 public interface AddressService {
-    List<Address> getAllAddresses();
+    List<AddressResponse> getAllAddresses();
 
-    Address getAddressByID(Long addressID);
+    AddressResponse getAddressByID(Long addressID) throws Exception;
 
-    Address addNewAddress(Address newAddress);
+    AddressResponse addNewAddress(AddressRequest newAddress);
 
-    Address updateAddress(Address updatedAddress);
+    AddressResponse updateAddress(AddressRequest updatedAddress);
 
     boolean deleteAddress(Long addressID);
 }
