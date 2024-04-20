@@ -4,11 +4,12 @@ import java.util.List;
 
 import edu.miu.cs489.lab7.dto.patient.PatientRequest;
 import edu.miu.cs489.lab7.dto.patient.PatientResponse;
+import edu.miu.cs489.lab7.exception.DataNotFoundException;
 
 public interface PatientService {
     List<PatientResponse> getAllPatients();
 
-    PatientResponse getPatientById(String patientId);
+    PatientResponse getPatientById(String patientId) throws DataNotFoundException;
 
     PatientResponse addNewPatient(PatientRequest newPatient);
 

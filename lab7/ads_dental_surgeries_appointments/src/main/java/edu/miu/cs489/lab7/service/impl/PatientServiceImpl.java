@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import edu.miu.cs489.lab7.dto.patient.PatientAdapter;
 import edu.miu.cs489.lab7.dto.patient.PatientRequest;
 import edu.miu.cs489.lab7.dto.patient.PatientResponse;
+import edu.miu.cs489.lab7.exception.DataNotFoundException;
 import edu.miu.cs489.lab7.model.Patient;
 import edu.miu.cs489.lab7.repository.PatientRepository;
 import edu.miu.cs489.lab7.service.PatientService;
@@ -28,9 +29,10 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public PatientResponse getPatientById(String patientId) {
-        // return patientRepository.findById(patientId).orElse(null);
-        return null;
+    public PatientResponse getPatientById(String patientId) throws DataNotFoundException {
+        var patient = patientRepository.findById(patientId).orElseThrow(
+                () -> new DataNotFoundException(String.format("Patient with ID, %s, is not found", patientId)));
+        return PatientAdapter.getPatientResponseFromPatient(patient);
     }
 
     @Override
