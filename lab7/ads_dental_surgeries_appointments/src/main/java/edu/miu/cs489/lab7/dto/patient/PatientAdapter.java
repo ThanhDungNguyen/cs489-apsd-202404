@@ -6,7 +6,8 @@ import edu.miu.cs489.lab7.model.Patient;
 public class PatientAdapter {
     public static Patient getPatientFromPatientRequest(PatientRequest patientRequest) {
         var address = AddressAdapter.getAddressFromAddressRequest(patientRequest.address());
-        return new Patient(null, patientRequest.firstName(), patientRequest.lastName(), patientRequest.phoneNumber(),
+        return new Patient(patientRequest.id(), patientRequest.firstName(), patientRequest.lastName(),
+                patientRequest.phoneNumber(),
                 patientRequest.email(), patientRequest.dateOfBirth(), address);
     }
 

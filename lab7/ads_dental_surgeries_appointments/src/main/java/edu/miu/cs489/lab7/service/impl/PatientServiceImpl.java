@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.miu.cs489.lab7.dto.patient.PatientAdapter;
 import edu.miu.cs489.lab7.dto.patient.PatientRequest;
 import edu.miu.cs489.lab7.dto.patient.PatientResponse;
 import edu.miu.cs489.lab7.repository.PatientRepository;
@@ -28,10 +29,10 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public PatientResponse addNewPatient(PatientRequest newPatient) {
-        // patientRepository.save(newPatient);
-        // return newPatient;
-        return null;
+    public PatientResponse addNewPatient(PatientRequest newPatientRequest) {
+        var newPatient = PatientAdapter.getPatientFromPatientRequest(newPatientRequest);
+        patientRepository.save(newPatient);
+        return PatientAdapter.getPatientResponseFromPatient(newPatient);
     }
 
     @Override
