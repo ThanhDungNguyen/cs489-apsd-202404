@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.miu.cs489.lab7.model.Patient;
+import edu.miu.cs489.lab7.dto.patient.PatientRequest;
+import edu.miu.cs489.lab7.dto.patient.PatientResponse;
 import edu.miu.cs489.lab7.repository.PatientRepository;
 import edu.miu.cs489.lab7.service.PatientService;
 
@@ -15,31 +16,35 @@ public class PatientServiceImpl implements PatientService {
     private PatientRepository patientRepository;
 
     @Override
-    public List<Patient> getAllPatients() {
-        return patientRepository.findAll();
+    public List<PatientResponse> getAllPatients() {
+        // return patientRepository.findAll();
+        return null;
     }
 
     @Override
-    public Patient getPatientById(String patientId) {
-        return patientRepository.findById(patientId).orElse(null);
+    public PatientResponse getPatientById(String patientId) {
+        // return patientRepository.findById(patientId).orElse(null);
+        return null;
     }
 
     @Override
-    public Patient addNewPatient(Patient newPatient) {
-        patientRepository.save(newPatient);
-        return newPatient;
+    public PatientResponse addNewPatient(PatientRequest newPatient) {
+        // patientRepository.save(newPatient);
+        // return newPatient;
+        return null;
     }
 
     @Override
-    public Patient updatePatient(Patient updatedPatient) {
-        patientRepository.save(updatedPatient);
-        return updatedPatient;
+    public PatientResponse updatePatient(PatientRequest updatedPatient) {
+        // patientRepository.save(updatedPatient);
+        // return updatedPatient;
+        return null;
     }
 
     @Override
     public boolean deletePatient(String patientId) {
         patientRepository.deleteById(patientId);
-        return true;
+        return false;
     }
 
 }

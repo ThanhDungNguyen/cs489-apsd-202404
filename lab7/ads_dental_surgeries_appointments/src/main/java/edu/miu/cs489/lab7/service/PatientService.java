@@ -2,16 +2,17 @@ package edu.miu.cs489.lab7.service;
 
 import java.util.List;
 
-import edu.miu.cs489.lab7.model.Patient;
+import edu.miu.cs489.lab7.dto.patient.PatientRequest;
+import edu.miu.cs489.lab7.dto.patient.PatientResponse;
 
 public interface PatientService {
-    List<Patient> getAllPatients();
+    List<PatientResponse> getAllPatients();
 
-    Patient getPatientById(String patientId);
+    PatientResponse getPatientById(String patientId);
 
-    Patient addNewPatient(Patient newPatient);
+    PatientResponse addNewPatient(PatientRequest newPatient);
 
-    Patient updatePatient(Patient updatedPatient);
+    PatientResponse updatePatient(PatientRequest updatedPatient);
 
     boolean deletePatient(String patientId);
 }
