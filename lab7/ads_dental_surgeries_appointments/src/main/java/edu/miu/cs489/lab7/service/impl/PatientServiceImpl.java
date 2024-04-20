@@ -1,5 +1,6 @@
 package edu.miu.cs489.lab7.service.impl;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import edu.miu.cs489.lab7.dto.patient.PatientAdapter;
 import edu.miu.cs489.lab7.dto.patient.PatientRequest;
 import edu.miu.cs489.lab7.dto.patient.PatientResponse;
+import edu.miu.cs489.lab7.model.Patient;
 import edu.miu.cs489.lab7.repository.PatientRepository;
 import edu.miu.cs489.lab7.service.PatientService;
 
@@ -20,7 +22,8 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public List<PatientResponse> getAllPatients() {
         var patients = patientRepository.findAll();
-        return patients.stream().map(patient -> PatientAdapter.getPatientResponseFromPatient(patient))
+        return patients.stream().sorted(Comparator.comparing(Patient::getLastName).reversed())
+                .map(patient -> PatientAdapter.getPatientResponseFromPatient(patient))
                 .collect(Collectors.toList());
     }
 
