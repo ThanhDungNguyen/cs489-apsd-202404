@@ -39,8 +39,8 @@ public class PatientController {
         }
     }
 
-    @PostMapping(value = "/add")
-    public ResponseEntity<PatientResponse> addNewPatient(@RequestBody PatientRequest patientRequest) {
+    @PostMapping(value = "/register")
+    public ResponseEntity<PatientResponse> registerNewPatient(@RequestBody PatientRequest patientRequest) {
         var patientResponse = patientService.addNewPatient(patientRequest);
         return new ResponseEntity<>(patientResponse, HttpStatus.OK);
     }
