@@ -1,5 +1,6 @@
 package edu.miu.cs489.lab7.service.impl;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -30,7 +31,8 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public List<AddressResponseWithPatient> getAllAddressesWithPatients() {
         var addresses = addressRepository.findAll();
-        return addresses.stream().map(address -> AddressAdapter.getAddressResponseWithPatientFromAddress(address))
+        return addresses.stream().sorted(Comparator.comparing(Address::getCity))
+                .map(address -> AddressAdapter.getAddressResponseWithPatientFromAddress(address))
                 .collect(Collectors.toList());
     }
 
