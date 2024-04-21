@@ -62,14 +62,15 @@ public class PatientServiceImpl implements PatientService {
         patient.setAddress(address);
 
         patientRepository.save(patient);
-        
+
         return PatientAdapter.getPatientResponseFromPatient(patient);
     }
 
     @Override
-    public boolean deletePatient(String patientId) {
+    public void deletePatientById(String patientId) throws DataNotFoundException {
+        patientRepository.findById(patientId).orElseThrow(
+                () -> new DataNotFoundException(String.format("Patient with ID, %s, is not found", patientId)));
         patientRepository.deleteById(patientId);
-        return false;
     }
 
 }

@@ -15,5 +15,5 @@ public interface PatientService {
 
     PatientResponse updatePatient(String patientId, PatientRequest updatedPatient) throws DataNotFoundException;
 
-    boolean deletePatient(String patientId);
+    void deletePatientById(String patientId) throws DataNotFoundException;
 }
