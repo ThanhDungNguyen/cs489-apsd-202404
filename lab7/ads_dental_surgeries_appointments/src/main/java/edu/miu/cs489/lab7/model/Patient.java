@@ -20,6 +20,6 @@ public class Patient {
     private String phoneNumber;
     private String email;
     private LocalDate dateOfBirth;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Address address;
 }

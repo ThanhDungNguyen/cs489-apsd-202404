@@ -16,4 +16,9 @@ public class PatientAdapter {
         return new PatientResponse(patient.getId(), patient.getFirstName(), patient.getLastName(),
                 patient.getPhoneNumber(), patient.getEmail(), patient.getDateOfBirth(), addressResponse);
     }
+
+    public static PatientResponse getPatientResponseWithoutAddressFromPatient(Patient patient) {
+        return new PatientResponse(patient.getId(), patient.getFirstName(), patient.getLastName(),
+                patient.getPhoneNumber(), patient.getEmail(), patient.getDateOfBirth(), null);
+    }
 }

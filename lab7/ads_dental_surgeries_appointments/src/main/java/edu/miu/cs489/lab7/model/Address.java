@@ -18,4 +18,6 @@ public class Address {
     private String city;
     private String state;
     private String zipCode;
+    @OneToOne(mappedBy = "address"/* , fetch = FetchType.LAZY */)
+    private Patient patient;
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.miu.cs489.lab7.dto.address.AddressResponse;
+import edu.miu.cs489.lab7.dto.address.AddressResponseWithPatient;
 import edu.miu.cs489.lab7.service.AddressService;
 
 @RestController
@@ -19,8 +19,8 @@ public class AddressController {
     private AddressService addressService;
 
     @GetMapping(value = "/list")
-    public ResponseEntity<List<AddressResponse>> getAllAddresses() {
-        var addresses = addressService.getAllAddresses();
+    public ResponseEntity<List<AddressResponseWithPatient>> getAllAddresses() {
+        var addresses = addressService.getAllAddressesWithPatients();
         return new ResponseEntity<>(addresses, HttpStatus.OK);
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import edu.miu.cs489.lab7.dto.address.AddressAdapter;
 import edu.miu.cs489.lab7.dto.address.AddressRequest;
 import edu.miu.cs489.lab7.dto.address.AddressResponse;
+import edu.miu.cs489.lab7.dto.address.AddressResponseWithPatient;
 import edu.miu.cs489.lab7.model.Address;
 import edu.miu.cs489.lab7.repository.AddressRepository;
 import edu.miu.cs489.lab7.service.AddressService;
@@ -23,6 +24,13 @@ public class AddressServiceImpl implements AddressService {
     public List<AddressResponse> getAllAddresses() {
         var addresses = addressRepository.findAll();
         return addresses.stream().map(address -> AddressAdapter.getAddressResponseFromAddress(address))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AddressResponseWithPatient> getAllAddressesWithPatients() {
+        var addresses = addressRepository.findAll();
+        return addresses.stream().map(address -> AddressAdapter.getAddressResponseWithPatientFromAddress(address))
                 .collect(Collectors.toList());
     }
 
