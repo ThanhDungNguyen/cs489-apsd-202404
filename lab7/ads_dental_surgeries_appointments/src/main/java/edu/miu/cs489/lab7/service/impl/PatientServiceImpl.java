@@ -73,4 +73,14 @@ public class PatientServiceImpl implements PatientService {
         patientRepository.deleteById(patientId);
     }
 
+    @Override
+    public List<PatientResponse> searchPatient(String searchString) {
+        var patients = patientRepository.searchByKeyword(searchString);
+        if (patients != null)
+            return patients.stream().map(patient -> PatientAdapter.getPatientResponseFromPatient(patient))
+                    .collect(Collectors.toList());
+        else
+            return null;
+    }
+
 }

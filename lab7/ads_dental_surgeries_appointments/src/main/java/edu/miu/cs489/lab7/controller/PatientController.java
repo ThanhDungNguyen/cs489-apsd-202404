@@ -67,4 +67,10 @@ public class PatientController {
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping(value = "/search/{searchString}")
+    public ResponseEntity<List<PatientResponse>> searchPatient(@PathVariable String searchString) {
+        var patients = patientService.searchPatient(searchString);
+        return new ResponseEntity<>(patients, HttpStatus.OK);
+    }
 }
