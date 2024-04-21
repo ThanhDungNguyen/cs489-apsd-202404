@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,5 +44,16 @@ public class PatientController {
     public ResponseEntity<PatientResponse> registerNewPatient(@RequestBody PatientRequest patientRequest) {
         var patientResponse = patientService.addNewPatient(patientRequest);
         return new ResponseEntity<>(patientResponse, HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/update/{patientId}")
+    public ResponseEntity<?> updatePatient(@PathVariable String patientId,
+            @RequestBody PatientRequest updatedPatientRequest) {
+        try {
+            var patientResponse = patientService.updatePatient(patientId, updatedPatientRequest);
+            return new ResponseEntity<PatientResponse>(patientResponse, HttpStatus.OK);
+        } catch (DataNotFoundException exception) {
+            return new ResponseEntity<String>(exception.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
 }

@@ -11,6 +11,7 @@ import edu.miu.cs489.lab7.dto.patient.PatientAdapter;
 import edu.miu.cs489.lab7.dto.patient.PatientRequest;
 import edu.miu.cs489.lab7.dto.patient.PatientResponse;
 import edu.miu.cs489.lab7.exception.DataNotFoundException;
+import edu.miu.cs489.lab7.model.Address;
 import edu.miu.cs489.lab7.model.Patient;
 import edu.miu.cs489.lab7.repository.PatientRepository;
 import edu.miu.cs489.lab7.service.PatientService;
@@ -43,10 +44,26 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public PatientResponse updatePatient(PatientRequest updatedPatient) {
-        // patientRepository.save(updatedPatient);
-        // return updatedPatient;
-        return null;
+    public PatientResponse updatePatient(String patientId, PatientRequest updatedPatient) throws DataNotFoundException {
+        var patient = patientRepository.findById(patientId).orElseThrow(
+                () -> new DataNotFoundException(String.format("Patient with ID, %s, is not found", patientId)));
+
+        patient.setFirstName(updatedPatient.firstName());
+        patient.setLastName(updatedPatient.lastName());
+        patient.setPhoneNumber(updatedPatient.phoneNumber());
+        patient.setEmail(updatedPatient.email());
+        patient.setDateOfBirth(updatedPatient.dateOfBirth());
+
+        Address address = patient.getAddress() != null ? patient.getAddress() : new Address();
+        address.setStreet(updatedPatient.address().street());
+        address.setCity(updatedPatient.address().city());
+        address.setState(updatedPatient.address().state());
+        address.setZipCode(updatedPatient.address().zipCode());
+        patient.setAddress(address);
+
+        patientRepository.save(patient);
+        
+        return PatientAdapter.getPatientResponseFromPatient(patient);
     }
 
     @Override

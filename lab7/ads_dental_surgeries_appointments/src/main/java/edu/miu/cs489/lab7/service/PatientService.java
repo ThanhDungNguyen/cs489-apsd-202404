@@ -13,7 +13,7 @@ public interface PatientService {
 
     PatientResponse addNewPatient(PatientRequest newPatient);
 
-    PatientResponse updatePatient(PatientRequest updatedPatient);
+    PatientResponse updatePatient(String patientId, PatientRequest updatedPatient) throws DataNotFoundException;
 
     boolean deletePatient(String patientId);
 }
