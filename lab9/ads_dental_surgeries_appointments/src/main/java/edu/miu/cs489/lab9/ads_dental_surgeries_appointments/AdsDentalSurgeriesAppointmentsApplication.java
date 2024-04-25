@@ -37,7 +37,7 @@ public class AdsDentalSurgeriesAppointmentsApplication {
 
 			User newAdminUser = new User(null, "Admin", "Admin", "Admin", "admin",
 					passwordEncoder.encode("test1234"), "admin@fairfieldlibrary.com",
-					listAdminRoles);
+					listAdminRoles, true, true, true, true);
 			userRepository.save(newAdminUser);
 		}
 	}
