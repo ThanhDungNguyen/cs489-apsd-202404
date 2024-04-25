@@ -1,4 +1,4 @@
-package edu.miu.cs489.lab9.ads_dental_surgeries_appointments.dto.user;
+package edu.miu.cs489.lab9.ads_dental_surgeries_appointments.dto.userauth;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.dto.user.UserAuthRequest;
+import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.dto.userauth.UserAuthRequest;
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.utils.service.JWTManagementUtilityService;
 import jakarta.validation.Valid;
 
