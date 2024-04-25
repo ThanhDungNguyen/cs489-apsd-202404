@@ -1,5 +1,7 @@
 package edu.miu.cs489.lab9.ads_dental_surgeries_appointments.model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,4 +21,9 @@ public class Dentist {
     private String phoneNumber;
     private String email;
     private String specialization;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "users_roles", joinColumns = {
+            @JoinColumn(name = "USER_ID", referencedColumnName = "id") }, inverseJoinColumns = {
+                    @JoinColumn(name = "ROLE_ID", referencedColumnName = "roleId") })
+    private List<Role> roles;
 }
