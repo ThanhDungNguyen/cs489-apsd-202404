@@ -1,6 +1,7 @@
 package edu.miu.cs489.lab9.ads_dental_surgeries_appointments.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.dto.user.RoleRequest;
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.dto.user.RoleResponse;
@@ -8,6 +9,7 @@ import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.model.Role;
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.repository.RoleRepository;
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.service.RoleService;
 
+@Service
 public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleRepository roleRepository;
