@@ -4,7 +4,7 @@ import java.util.List;
 
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.dto.patient.PatientRequest;
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.dto.patient.PatientResponse;
-import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.exception.DataNotFoundException;
+import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.utils.exception.DataNotFoundException;
 
 public interface PatientService {
     List<PatientResponse> getAllPatients();

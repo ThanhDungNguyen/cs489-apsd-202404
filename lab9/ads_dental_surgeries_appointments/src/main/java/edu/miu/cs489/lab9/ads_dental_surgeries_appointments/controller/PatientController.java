@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.dto.patient.PatientRequest;
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.dto.patient.PatientResponse;
-import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.exception.DataNotFoundException;
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.service.PatientService;
+import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.utils.exception.DataNotFoundException;
 
 @RestController
 @RequestMapping(value = "/adsweb/api/v1/patient")

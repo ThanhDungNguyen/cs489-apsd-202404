@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.dto.patient.PatientAdapter;
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.dto.patient.PatientRequest;
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.dto.patient.PatientResponse;
-import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.exception.DataNotFoundException;
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.model.Address;
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.model.Patient;
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.repository.PatientRepository;
 import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.service.PatientService;
+import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.utils.exception.DataNotFoundException;
 
 @Service
 public class PatientServiceImpl implements PatientService {
