@@ -12,7 +12,7 @@ import edu.miu.cs489.lab9.ads_dental_surgeries_appointments.utils.service.JWTMan
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping(value = { "/citylibrary/api/v1/service" })
+@RequestMapping(value = { "/adsweb/api/v1/service" })
 public class UserAuthController {
     private JWTManagementUtilityService jwtManagementUtilityService;
     private AuthenticationManager authenticationManager;
