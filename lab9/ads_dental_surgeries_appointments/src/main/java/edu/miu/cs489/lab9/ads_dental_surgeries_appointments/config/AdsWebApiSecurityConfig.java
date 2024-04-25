@@ -33,8 +33,8 @@ public class AdsWebApiSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         auth -> {
-                            auth.requestMatchers("/citylibrary/api/v1/service/public/**").permitAll()
-                                    .requestMatchers("/citylibrary/api/v1/publisher/**").authenticated();
+                            auth.requestMatchers("/adsweb/api/v1/service/public/**").permitAll()
+                                    .requestMatchers("/adsweb/api/v1/publisher/**").authenticated();
                         })
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
