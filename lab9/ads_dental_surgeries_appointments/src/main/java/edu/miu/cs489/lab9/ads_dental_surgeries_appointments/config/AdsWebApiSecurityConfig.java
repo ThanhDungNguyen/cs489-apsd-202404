@@ -34,7 +34,8 @@ public class AdsWebApiSecurityConfig {
                 .authorizeHttpRequests(
                         auth -> {
                             auth.requestMatchers("/adsweb/api/v1/service/public/**").permitAll()
-                                    .requestMatchers("/adsweb/api/v1/publisher/**").authenticated();
+                                    .requestMatchers("/adsweb/api/v1/patient/**").authenticated()
+                                    .requestMatchers("/adsweb/api/v1/address/**").authenticated();
                         })
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
