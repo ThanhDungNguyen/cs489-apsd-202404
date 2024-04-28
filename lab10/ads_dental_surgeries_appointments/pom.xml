@@ -67,6 +67,17 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+				  <archive>
+					<manifest>
+					  <mainClass>edu.miu.cs489.lab10.AdsDentalSurgeriesAppointmentsApplication</mainClass>
+					</manifest>
+				  </archive>
+				</configuration>
+			  </plugin>
 		</plugins>
 	</build>
 
