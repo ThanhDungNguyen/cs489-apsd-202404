@@ -1,5 +1,5 @@
 # Using OpenJDK version 17 as the base image
-FROM openjdk:17
+FROM openjdk:21-jdk
 # Create a new app directory in the container for the application files
 RUN mkdir /app
 # Copy the compiled executable files/folders from host machine filesystem to the container/image's filesystem
