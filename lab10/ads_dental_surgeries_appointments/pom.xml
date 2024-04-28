@@ -8,7 +8,7 @@
 		<version>3.2.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>edu.miu.cs489.lab7</groupId>
+	<groupId>edu.miu.cs489.lab10</groupId>
 	<artifactId>ads_dental_surgeries_appointments</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ads_dental_surgeries_appointments</name>
