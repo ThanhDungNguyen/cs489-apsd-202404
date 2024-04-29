@@ -14,9 +14,14 @@ public class AppTest {
     }
 
     @Test
-    public void flattenArrayShouldWork() {
+    public void flatten2DArrayShouldWork() {
         int[][] testedArray = { { 1, 3 }, { 0 }, { 4, 5, 9 } };
         int[] expectedArray = { 1, 3, 0, 4, 5, 9 };
         assertArrayEquals(arrayFlattener.flattenArray(testedArray), expectedArray);
+    }
+
+    @Test
+    public void flattenNullArrayShouldWork() {
+        assertArrayEquals(arrayFlattener.flattenArray(null), null);
     }
 }
