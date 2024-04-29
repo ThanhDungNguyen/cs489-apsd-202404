@@ -21,6 +21,13 @@
     <jacoco.unit-tests.limit.method-complexity>5</jacoco.unit-tests.limit.method-complexity>
   </properties>
   <dependencies>
+
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-runner</artifactId>
+      <version>1.11.0-M1</version>
+    </dependency>
+
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
