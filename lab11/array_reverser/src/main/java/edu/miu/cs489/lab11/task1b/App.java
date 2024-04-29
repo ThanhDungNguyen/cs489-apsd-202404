@@ -1,17 +1,16 @@
 package edu.miu.cs489.lab11.task1b;
 
-/**
- * Hello world!
- */
+import java.util.stream.IntStream;
+
 public final class App {
     private App() {
     }
 
-    /**
-     * Says hello to the world.
-     * @param args The arguments of the program.
-     */
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        int[][] myArray = { { 1, 2, 3 }, { 4, 5 }, { 6, 7, 8, 9 } };
+        ArrayFlattenerService arrayFlattenerService = new ArrayFlattenerService();
+        IntStream.of(arrayFlattenerService.reverseArray(myArray))
+                .forEach(n -> System.out.print(String.format("%d ", n)));
+        System.out.println();
     }
 }
