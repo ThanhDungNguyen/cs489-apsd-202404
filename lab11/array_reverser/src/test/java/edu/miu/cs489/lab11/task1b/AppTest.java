@@ -14,9 +14,14 @@ class AppTest {
     }
 
     @Test
-    void flatten2DArrayWithServiceShouldWork() {
+    void flatten2DArrayByServiceShouldWork() {
         int[][] testedArray = { { 1, 3 }, { 0 }, { 4, 5, 9 } };
         int[] expectedArray = { 9, 5, 4, 0, 3, 1 };
         assertArrayEquals(arrayFlattenerService.reverseArray(testedArray), expectedArray);
+    }
+
+    @Test
+    void flattenNullArrayByServiceShouldWork() {
+        assertArrayEquals(arrayFlattenerService.reverseArray(null), null);
     }
 }
